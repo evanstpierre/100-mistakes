@@ -1,11 +1,8 @@
-
-
 ## Chapter 2: Code and project organization
 
 **Unintended variable shadowing:**
 
 Variable shadowing - Go variable name declared in a block can be redeclared in an inner block.
-
 
 
 ```go
@@ -62,7 +59,7 @@ func main() { // (3)
     fmt.Println("main")
 }
 // #1 executed first
-// #2 exectured second
+// #2 executed second
 // #3 Excuted last
 
 ```
@@ -109,7 +106,7 @@ func init() {
     -  lack of isolation
 
 Init functions drawbacks:
-- limit error management
+- limits error management
 - limits isolation (unit test are harder)
 - global variables
 
@@ -132,3 +129,56 @@ Advantages:
 Conventions (using field called *balance*)
 *Balance()* - The Getter Method 
 *SetPalance()* - Setter Method
+
+
+**Interface Pollution:**
+- overwhelming code with unneccessarity abstractions
+
+**Interfaces are med to create abastraction. Abstractions should be discovered not created**
+
+**When should we use Interfaces?**
+- common behaviours: when multiple types implement a common behaviour (i.e. sorting)
+
+- decoupling: if we rely on abstraction instead of a concrete implementation itself => implementation itself cna be replaces without having to change our code
+    - decoupling can allow to make Unit test (mock) for both    
+
+- Restricting behaviour: good for semantic enforcement
+
+
+**Solve the problem that has to be solved now**
+
+**Interfaces on the producer side:**
+ - where should an interface live
+
+
+Producer side: The interface is defined alongside the concrete implementation
+
+Consumer side: the interface is defined where it's used
+
+GO: WANT interface to be on consumer side
+
+
+*Its up to the client to determine whether they need abstraction*
+
+**Returning Interfaces**
+- why is returning an interfaces a bad practice? It restricts flexibility
+
+**Any Says nothing:** an empty interface type (does not convey anything)
+
+**Generics:** allows writing code with types that can be specified later and instantiated when needed.
+ 
+When should I use generics?
+* Data structures - binary tree, nodes
+* 
+
+When should we not use generics
+* when calling a method of the type Operator
+* when it makes are code more complex
+
+When creating a struct Go allows you to embeed types
+- can be visible to our clients...
+- embeeding can allow us to remove forwarding methods
+
+
+
+
